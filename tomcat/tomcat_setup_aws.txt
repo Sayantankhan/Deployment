@@ -1,0 +1,32 @@
+Install Tomcat
+To install tomcat, ssh into your instance and type the following command:
+ >> sudo yum install tomcat6 tomcat6-webapps
+
+“tomcat6-webapps” is optional and will install the Tomcat sample apps. 
+The configuration files are in /usr/share/tomcat6.  ------------------- /etc/tomcat6 -------------all config file is in etc folder 
+To install your own web app, you can simply SFTP it to /usr/share/tomcat6/webapps.
+To configure classpath /usr/sbin/tomcat6
+
+To start Tomcat:
+sudo service tomcat6 start
+
+To stop Tomcat:
+sudo service tomcat6 stop
+
+download oracle jdk
+wget --no-cookies --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com" "http://download.oracle.com/otn-pub/java/jdk/7u40-b43/jdk-7u40-linux-x64.tar.gz"
+
+Once downloaded we need to unpack it using tar: 
+tar zxpvf jdk-7u40-linux-x64.tar.gz.
+
+LOG file location:
+/var/log/<APPLICATION_NAME>/catalina.out
+
+Application location:
+/usr/share/<APPLICATION_NAME>/
+
+To see which application is runnong  on specific port:
+netstat -nap | grep <port>
+
+You can kill a process with the command: 
+kill -9 <pid>

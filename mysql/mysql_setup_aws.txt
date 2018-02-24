@@ -1,0 +1,42 @@
+First install mysql into aws:
+sudo yum install mysql-server
+
+to run mysql in that:
+sudo service mysqld start
+
+to enable FEDERATED, you must start the MySQL 
+server binary using the --federated option.
+
+to stop mysql:
+sudo service mysqld start
+
+to show processes:
+ps -A
+netstat -tln (get with port no)
+
+open the port from SecurityGroup for Mysql port inbound connection:
+default: 3306
+
+bind your ip with mysql server:
+mysqld --verbose --help | grep <<bind-address>>
+
+start mysql command promt:
+mysql -u [username] -p
+mysql
+
+check into user table:
+select host,user from mysql.user;
+
+creating new user and granting permissions: 
+ 1. CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
+ 2. GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
+ 3. FLUSH PRIVILEGES; // changes that u made, make them effective
+  mysql> CREATE USER 'monty'@'localhost' IDENTIFIED BY 'some_pass';
+  mysql> GRANT ALL PRIVILEGES ON *.* TO 'monty'@'localhost'
+		->     WITH GRANT OPTION;
+ 
+ create user to connect outside netowrk with all privilage 
+	mysql> CREATE USER 'monty'@'%' IDENTIFIED BY 'some_pass';
+	mysql> GRANT ALL PRIVILEGES ON *.* TO 'monty'@'%'
+		->     WITH GRANT OPTION;
+
